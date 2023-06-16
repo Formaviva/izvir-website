@@ -1,0 +1,83 @@
+.red-bg, .red-button {
+    background-color: #FF0000;
+  }
+
+  .red-button:hover {
+    background-color: #CC0000;
+  }
+
+  body {
+    font-family: 'Chakra Petch', sans-serif !important;
+    background-color: #000;
+
+    animation: strobe 0.01s 10;
+
+    background-image: url('/images/bg.jpeg');
+    background-size: 100% 100%;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999; /* Make sure it's on top of other elements */
+    pointer-events: none;
+  }
+
+  .strobe {
+    animation: strobe 0.01s 10;
+  }
+
+  .top-nav {
+    max-width: 220px;
+  }
+
+  @keyframes pulse-animation {
+    0%, 100% {
+      transform: scale(1);
+      filter: blur(0);
+    }
+    50% {
+      transform: scale(1.2);
+      filter: blur(20px);
+    }
+  }
+
+  .animate-pulse-animation {
+    animation: pulse-animation 25s infinite;
+  }
+
+  @keyframes strobe {
+    0% {
+      background-color: white;
+    }
+    50% {
+      background-color: black;
+    }
+    100% {
+      background-color: white;
+    }
+  }
+
+  rect {
+    animation: raise 2s linear forwards;
+    transform-origin: bottom;
+  }
+
+  @keyframes raise {
+    from {
+      transform: scaleY(0);
+    }
+    to {
+      transform: scaleY(1);
+    }
+  }
+
+  .fill-white {
+    fill: white;
+  }
