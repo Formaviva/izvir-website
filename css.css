@@ -5,7 +5,7 @@ body {
   animation: strobe 0.01s 10;
 
   background-image: url('/images/bgx.jpeg');
-  background-color: rgba(0, 0, 0, 0.5);
+  background-repeat: no-repeat;
   background-size: 100% 100%;
   background-size: cover;
   background-position: center;
