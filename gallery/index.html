@@ -4,12 +4,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Izvir Line-up</title>
+  <title>Izvir Gallery</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400&display=swap" rel="stylesheet">
   <link href="/css.css" rel="stylesheet">
+
+  <link href="/icon-32.png" rel="shortcut icon" type="image/x-icon">
+  <link href="/icon-256.png" rel="apple-touch-icon">
 
   <meta content="Izvir – An intimate ceremony for electronic music lovers" property="og:title">
   <meta content="https://izvir.org/share.jpeg" property="og:image">
@@ -17,6 +20,7 @@
   <meta content="https://izvir.org/share.jpeg" property="twitter:image">
 </head>
 
+<!-- if someone is looking at the code... s/he/he/they can see we're a real pro -->
 <body class="bg-black text-white font-sans">
   <div id="back" class="overlay"></div>
   <div id="god" class="overlay strobe"></div>
@@ -24,7 +28,7 @@
   <section class="py-6 px-5 max-w-sm top-nav mx-auto">
     <div class="flex justify-center space-x-3 text-center">
       <a href="/lineup" class="text-gray-500 font-semibold hover:text-white transition-color duration-300">Line-up</a>
-      <a href="/gallery" class="text-gray-500 font-semibold hover:text-white transition-color duration-300">Gallery</a>
+      <a href="/gallery" class="text-white font-semibold hover:text-white transition-color duration-300">Gallery</a>
       <!--
       <a href="/information" class="text-gray-400 font-semibold hover:opacity-80 transition-opacity duration-300">Information</a>
       -->
@@ -46,32 +50,20 @@
   <!-- Section 2 -->
   <section class="py-10 pr-5 pl-5 mt-10">
     <div class="flex justify-center mb-5">
-      <div id="countdown" class="text-3xl"></div>
+      <div id="countdown" class="text-2xl"></div>
     </div>
     <p class="text-center">Until the red Sun completes the circle in its orbit,<br /> we return to the source again.</p>
   </section>
 
   <!-- Section 3 -->
   <section class="py-10 pr-5 pl-5 mt-20">
-    <h2 class="text-3xl font-bold mb-5 max-w-2xl mx-auto py-10 text-center">You can trust us with the line-up.</h2>
-    <div class="text-center text-justify max-w-lg mx-auto">
-      <p class="mb-4">Izvir is a festival held by Formaviva, the platform and organization founded two decades ago with a mission to facilitate and empower independent music and its creators.</p>
-      <p class="mb-4">
-        During the 2 days of the festival, we will experience a meticulously curated lineup of visionary artists that will take you on a journey through sound, from deep ambient to the melodic vibrations of house and the pulsing rhythms techno, some of the best indepedent electronic music unbeknownst to the world.
-      </p>
-      <p class="mb-4">
-        But the music is just one aspect of what makes Izvir special. It's the people, the energy, and the spirit of the community that truly set it apart. We come together from all corners of the world to celebrate life, dance, and embrace the beauty of our diversity.
-      </p>
-      <p class="mb-4">
-        For these reasons, the festival has been held back with promotion and reserved until this 9th year for a very limited and intimate group of people who became its foundation — a part of an extended family.
-      </p>
-    </div>
+    <h2 class="text-3xl font-bold mb-5 max-w-2xl mx-auto py-10 text-center"><i>A friend becomes a stranger and strager becomes a friend.</i></h2>
   </section>
 
   <section class="py-10 pr-5 pl-5 mt-20 max-w-7xl mx-auto">
-    <img src="/images/envision.jpeg" alt="Izvir envision" class="w-full max-w-xl mx-auto h-full object-cover py-10 mb-10">
-    <img src="/images/stargrid.jpeg" alt="Stargrid" class="w-full max-w-xl mx-auto h-full object-cover py-10 mb-10">
-    <img src="/images/morning-haze.jpeg" alt="Izvir haze" class="w-full max-w-xl mx-auto h-full object-cover py-10 mb-10">
+    <img src="/images/morning-glory.jpeg" alt="Izvirski Ljudje" class="w-full max-w-3xl mx-auto h-full object-cover py-10 mb-10">
+    <img src="/images/overview.jpeg" alt="Izvir landscape" class="w-full h-full object-cover py-10 mb-10">
+    <img src="/images/place.jpeg" alt="Izvir the source" class="w-full h-full object-cover py-10 mb-10">
   </section>
 
   <!-- Section 5 -->
@@ -79,15 +71,38 @@
     <h2 class="text-3xl font-bold mb-5 max-w-2xl mx-auto py-5 text-center">Return to the mother's womb</h2>
     <div class="text-center text-justify max-w-lg mx-auto">
       <p class="mb-10">
-        Izvir offers a very limited experienced to the extended family of Kundi descendants — the daughters and the sons of the brotherly selfless mothers who unselfishly take care of all the children as their own.
+        Izvir offers a very limited experienced to the extended family of Kundi descendants - the daughters and the sons of the brotherly selfless mothers who unselfishly take care of all the children as their own.
       </p>
     </div>
-    <form class="flex flex-col items-center mt-10">
-      <input type="email" placeholder="janez@svetokriski.com" class="w-full max-w-md px-4 py-2 mb-5 bg-black border" required>
+    <form class="flex flex-col items-center mt-10" method="POST" action="https://forms.reform.app/headless/R8Uujx/izvir/dc0f3v/submissions" target="_blank">
+      <input type="email" placeholder="janez@svetokriski.com" class="w-full max-w-md px-4 py-2 mb-5 bg-black border" name="answers[0c5f2207-f72b-4b03-bd3a-75ca1006b152]" required>
       <button type="submit" class="red-button w-full max-w-xs px-4 py-2 text-white font-bold">
         Enter the source
       </button>
     </form>
+  </section>
+
+  <section class="py-10 pr-5 pl-5 mt-20 max-w-7xl mx-auto">
+    <img src="/images/izvir-night.jpeg" alt="Izvir tents" class="w-full h-full object-cover py-10 mb-10">
+  </section>
+
+
+  <!-- Section 5 -->
+  <section class="py-10 pr-5 pl-5 mt-20">
+    <h2 class="text-3xl font-bold mb-5 max-w-2xl mx-auto py-5 text-center">Formaviva is home to hundreds of indepedent creators who seek expression of freedom in music</h2>
+    <div class="text-center text-justify max-w-lg mx-auto">
+      <p class="mb-10">
+        Izvir is one of the festivals showcasing incredible creators who choose to sacrifice commercial success in the search for something greater. Their mission is rather a personal quest to create music that is pure, stays true to their core values, and continues to push boundaries.
+      </p>
+      <p class="mb-10">
+        Their music enriches our lives and make it more purposeful. For this reason, we cultivate awareness in supporting these creators while enjoying their music and connecting with their sound.
+      </p>
+      <div class="flex justify-center">
+        <a href="https://formaviva.com" target="_blank" class="bg-gray-800 hover:opacity-80 w-full max-w-xs px-4 py-2 text-white font-bold text-center mx-auto">
+          Join Formaviva
+        </a>
+      </div>
+    </div>
   </section>
 
   <!-- Section 6 -->
