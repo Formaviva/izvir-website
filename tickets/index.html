@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Izvir Tickets</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400&display=swap" rel="stylesheet">
+  <link href="/css.css" rel="stylesheet">
+
+  <link href="/icon-32.png" rel="shortcut icon" type="image/x-icon">
+  <link href="/icon-256.png" rel="apple-touch-icon">
+
+  <meta content="Izvir – An intimate ceremony for electronic music lovers" property="og:title">
+  <meta content="https://izvir.org/share.jpeg" property="og:image">
+  <meta content="Izvir – An intimate ceremony for electronic music lovers" property="twitter:title">
+  <meta content="https://izvir.org/share.jpeg" property="twitter:image">
+
+  <script async src="https://analytics.umami.is/script.js" data-website-id="b4b12261-3186-4697-a93a-5e23a6af86c1"></script>
+</head>
+
+<!-- if someone is looking at the code... s/he/he/they can see we're a real pro -->
+
+<body class="bg-black text-white font-sans">
+  <div id="back" class="overlay"></div>
+  <div id="god" class="overlay strobe"></div>
+
+  <section class="py-6 px-5 max-w-sm top-nav mx-auto">
+    <div class="flex justify-center space-x-3 text-center">
+      <a href="/lineup" class="text-gray-500 font-semibold hover:text-white transition-color duration-300">Line-up</a>
+      <a href="/gallery" class="text-gray-500 font-semibold hover:text-white transition-color duration-300">Gallery</a>
+      <a href="/tickets" class="text-white font-semibold hover:text-white transition-color duration-300">Tickets</a>
+      <!--
+      <a href="/information" class="text-gray-400 font-semibold hover:opacity-80 transition-opacity duration-300">Information</a>
+      -->
+    </div>
+  </section>
+
+  <!-- Section 1 -->
+  <section class="mt-60 pt-30 pb-30 pr-5 pl-5">
+
+    <div class="flex justify-center mb-5">
+      <a href="/">
+        <div class="w-20 h-20 rounded-full red-bg animate-pulse-animation"></div>
+      </a>
+    </div>
+
+    <div class="mt-20 flex justify-center">
+      <img src="/izvir-logo.svg" alt="Logo" class="w-full max-w-sm izvir">
+    </div>
+  </section>
+
+  <!-- Section 2 -->
+  <section class="py-10 pr-5 pl-5 mt-10">
+    <p class="text-center">Redirecting you to the tickets...</p>
+  </section>
+
+  <script src="/js.js"></script>
+
+  <script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    posthog.init('phc_PW1LNLineV6ik52fFyX8P0AeZHEAgdC9xiSOWqAte8M',{api_host:'https://app.posthog.com'})
+  </script>
+
+  <script>
+    setTimeout(function() {
+      window.location.href = "https://formaviva.typeform.com/to/xGV7YM3b";
+    }, 1000);
+  </script>
+</body>
+
+</html>
