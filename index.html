@@ -15,12 +15,15 @@
   <link href="/icon-256.png" rel="apple-touch-icon">
 </head>
 
+<!-- if someone is looking at the code... s/he/he/they can see we're a real pro -->
 <body class="bg-black text-white font-sans">
+  <div id="back" class="overlay"></div>
   <div id="god" class="overlay strobe"></div>
 
   <section class="py-6 px-5 max-w-sm top-nav mx-auto">
     <div class="flex justify-center space-x-3 text-center">
-      <a href="/lineup" class="font-semibold hover:opacity-80 transition-opacity duration-300">Line-up</a>
+      <a href="/lineup" class="text-gray-500 font-semibold hover:text-white transition-color duration-300">Line-up</a>
+      <a href="/lineup" class="text-gray-500 font-semibold hover:text-white transition-color duration-300">Gallery</a>
       <!--
       <a href="/information" class="text-gray-400 font-semibold hover:opacity-80 transition-opacity duration-300">Information</a>
       -->
@@ -31,18 +34,18 @@
   <section class="mt-60 pt-30 pb-30 pr-5 pl-5">
 
     <div class="flex justify-center mb-5">
-      <div class="w-20 h-20 rounded-full red-bg animate-pulse-animation"></div>
+      <a href="/"><div class="w-20 h-20 rounded-full red-bg animate-pulse-animation"></div></a>
     </div>
 
     <div class="mt-20 flex justify-center">
-      <img src="/izvir-logo.svg" alt="Logo" class="w-full max-w-sm">      
+      <img src="/izvir-logo.svg" alt="Logo" class="w-full max-w-sm izvir">      
     </div>
   </section>
 
   <!-- Section 2 -->
   <section class="py-10 pr-5 pl-5 mt-10">
     <div class="flex justify-center mb-5">
-      <div id="countdown" class="text-3xl"></div>
+      <div id="countdown" class="text-2xl"></div>
     </div>
     <p class="text-center">Until the red Sun completes the circle in its orbit,<br /> we return to the source again.</p>
   </section>
