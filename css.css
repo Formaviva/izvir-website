@@ -3,7 +3,10 @@ body {
   background-color: #000;
 
   animation: strobe 0.01s 10;
+  background-color: #000;
+}
 
+.bg {
   background-image: url('/images/bgx.jpeg');
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -27,6 +30,14 @@ body {
   background-color: rgba(0, 0, 0, 0.5);
   z-index: -1;
   animation: opacityLoop 58s infinite;
+
+  /* from the .bg */
+  background-image: url('/images/bgx.jpeg');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 @keyframes opacityLoop {
