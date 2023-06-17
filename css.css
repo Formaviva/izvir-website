@@ -35,10 +35,10 @@ body {
   background-image: url('/images/bgx.jpeg');
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  background-size: cover;
+  /* background-size: cover; */
   background-position: center;
   background-attachment: fixed;
-  
+
   top: 0;
   left: 0;
   width: 100%;
@@ -48,7 +48,7 @@ body {
 
 @keyframes opacityLoop {
   0% { opacity: 0.1; }
-  80% { opacity: 0.8; }
+  80% { opacity: 0.7; }
   100% { opacity: 0.1; }
 }
 
