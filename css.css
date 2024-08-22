@@ -56,9 +56,13 @@ body {
   max-width: 250px;
 }
 
-.red-bg,
-.red-button {
+.red-bg {
   background-color: #FF0000;
+}
+
+.red-button {
+  background-color: transparent;
+  border: 1px #FF0000 solid;
 }
 
 .red-button:hover {
