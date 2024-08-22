@@ -4,6 +4,7 @@ body {
 
   animation: strobe 0.01s 10;
   background-color: #000;
+  font-size: 14px;
 }
 
 .bg {
@@ -13,6 +14,10 @@ body {
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
+}
+
+section {
+  background-color: #000;
 }
 
 .overlay {
@@ -104,8 +109,12 @@ body {
     background-color: black;
   }
 
-  100% {
+  99% {
     background-color: white;
+  }
+
+  100% {
+    background-color: black;
   }
 }
 
