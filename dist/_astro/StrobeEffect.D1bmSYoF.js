@@ -1,0 +1,9 @@
+import{r as l}from"./index.DhYZZe0J.js";var i={exports:{}},a={};/**
+ * @license React
+ * react-jsx-runtime.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */var c=l,u=Symbol.for("react.element"),m=Symbol.for("react.fragment"),b=Object.prototype.hasOwnProperty,p=c.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED.ReactCurrentOwner,g={key:!0,ref:!0,__self:!0,__source:!0};function d(e,r,o){var s,f={},t=null,n=null;o!==void 0&&(t=""+o),r.key!==void 0&&(t=""+r.key),r.ref!==void 0&&(n=r.ref);for(s in r)b.call(r,s)&&!g.hasOwnProperty(s)&&(f[s]=r[s]);if(e&&e.defaultProps)for(s in r=e.defaultProps,r)f[s]===void 0&&(f[s]=r[s]);return{$$typeof:u,type:e,key:t,ref:n,props:f,_owner:p.current}}a.Fragment=m;a.jsx=d;a.jsxs=d;i.exports=a;var E=i.exports;const _=()=>{const[e,r]=l.useState(!0);return l.useEffect(()=>{const o=localStorage.getItem("strobeEnabled");o!==null&&r(JSON.parse(o))},[]),l.useEffect(()=>{localStorage.setItem("strobeEnabled",JSON.stringify(e));const o=document.getElementById("god");o&&!e&&o.classList.remove("strobe")},[e]),l.useEffect(()=>{if(!e)return;const o=(t,n)=>Math.floor(Math.random()*(n-t+1))+t,s=()=>{const t=document.getElementById("god");t&&e&&(t.classList.remove("strobe"),t.offsetWidth,t.classList.add("strobe"))},f=()=>{e&&setTimeout(()=>{if(!e)return;const t=o(3,5);for(let n=0;n<t;n++)setTimeout(()=>{e&&s()},n*200);f()},o(8e3,15e3))};return f(),()=>{const t=document.getElementById("god");t&&t.classList.remove("strobe")}},[e]),E.jsx("button",{onClick:()=>r(!e),className:"fixed top-4 right-20 z-50 px-3 py-1 text-sm bg-black border border-gray-700 rounded-full text-gray-400 hover:text-white hover:border-gray-500 transition-colors",title:e?"Disable strobe effect":"Enable strobe effect",children:e?"Strobe: On":"Strobe: Off"})};export{_ as default};

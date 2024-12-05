@@ -1,9 +1,12 @@
 import { createCanvas } from 'canvas';
 
-export const GET = async ({ request }) => {
-  const url = new URL(request.url);
-  const title = url.searchParams.get('title') || '';
-  const text = url.searchParams.get('text') || '';
+export default async function handler(req, res) {
+  if (req.method !== 'GET') {
+    return res.status(405).json({ error: 'Method not allowed' });
+  }
+
+  const title = req.query.title || '';
+  const text = req.query.text || '';
 
   // Instagram post dimensions (1080x1080)
   const width = 1080;
@@ -65,10 +68,5 @@ export const GET = async ({ request }) => {
   // Convert canvas to buffer
   const buffer = canvas.toBuffer('image/png');
 
-  return new Response(buffer, {
-    headers: {
-      'Content-Type': 'image/png',
-      'Cache-Control': 'public, max-age=31536000',
-    },
-  });
+  return res.status(200).setHeader('Content-Type', 'image/png').setHeader('Cache-Control', 'public, max-age=31536000').send(buffer);
 };
