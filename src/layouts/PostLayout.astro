@@ -1,0 +1,54 @@
+---
+import Layout from './Layout.astro';
+import JoinMission from '../components/JoinMission.astro';
+import ContentPreview from '../components/ContentPreview.astro';
+import SharePost from '../components/SharePost.astro';
+
+const { frontmatter } = Astro.props;
+const publishDate = new Date(frontmatter.publishDate);
+
+const profile = {
+  name: "The Source",
+  permalink: "the-source"
+};
+
+const currentPath = Astro.url.pathname.replace(/\/$/, '');
+const canonicalURL = new URL(currentPath, Astro.site).toString();
+
+---
+
+<Layout title={`${frontmatter.title} - Izvir`}>
+  <article class="max-w-3xl mx-auto px-4 py-12">
+    <h1 class="text-3xl font-bold mb-4">{frontmatter.title}</h1>
+    
+    <div class="text-gray-400 mb-8">
+      <span>By <a 
+        href={`/${profile.permalink}`}
+        class="text-red-500 hover:text-red-400 transition-colors"
+      >
+        {profile.name}
+      </a></span>
+      <span class="mx-2">•</span>
+      <time datetime={publishDate.toISOString()}>
+        {publishDate.toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        })}
+      </time>
+    </div>
+
+    <div class="prose prose-invert max-w-none">
+      <ContentPreview>
+        <slot />
+      </ContentPreview>
+    </div>
+
+    <SharePost 
+      title={frontmatter.title}
+      url={canonicalURL.toString()}
+    />
+
+    <JoinMission />
+  </article>
+</Layout>

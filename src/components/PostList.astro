@@ -1,0 +1,48 @@
+---
+// Get all posts from the profile directory
+const posts = await Astro.glob('../pages/the-source-team/*.md');
+
+const profile = {
+  name: "The Source",
+  permalink: "the-source"
+};
+
+// Sort posts by date
+const sortedPosts = posts
+  .filter(post => !post.url.endsWith('index.astro'))
+  .sort((a, b) => 
+    new Date(b.frontmatter.publishDate).getTime() - new Date(a.frontmatter.publishDate).getTime()
+  );
+---
+
+<div class="flex gap-6 overflow-x-auto pb-4 scrollbar-hide">
+  {sortedPosts.map(post => (
+    <div class="flex-shrink-0 min-w-full">
+      <div class="flex items-center justify-center gap-2 text-center">
+        <a 
+          href={post.url} 
+          class="text-gray-200 hover:text-white transition-colors"
+        >
+          {post.frontmatter.title}
+        </a>
+        <span class="text-gray-400">by</span>
+        <a 
+          href={`/${profile.permalink}`}
+          class="text-red-500 hover:text-red-400 transition-colors"
+        >
+          {profile.name}
+        </a>
+      </div>
+    </div>
+  ))}
+</div>
+
+<style>
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+</style>

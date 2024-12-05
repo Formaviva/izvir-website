@@ -1,0 +1,41 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const profile = {
+  name: "The Source",
+  permalink: "the-source-team",
+  bio: "The core team behind Izvir, working to create meaningful social connections."
+};
+
+const posts = await Astro.glob('./*.md');
+---
+
+<Layout title={`${profile.name} - Izvir`}>
+  <article class="max-w-3xl mx-auto px-4 py-12">
+    <h1 class="text-3xl font-bold mb-4">{profile.name}</h1>
+    
+    <div class="text-gray-400 mb-8">
+      {profile.bio}
+    </div>
+
+    <div class="mt-8">
+      <h2 class="text-xl font-bold mb-4">Posts</h2>
+      <div class="space-y-4">
+        {posts.map(post => (
+          <div class="border-l-2 border-red-500 pl-4">
+            <a href={post.url} class="text-lg hover:text-red-500 transition-colors">
+              {post.frontmatter.title}
+            </a>
+            <div class="text-gray-400 text-sm mt-1">
+              {new Date(post.frontmatter.publishDate).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+              })}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </article>
+</Layout>

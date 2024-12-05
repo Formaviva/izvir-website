@@ -1,0 +1,70 @@
+---
+import Layout from '../layouts/Layout.astro';
+import StrobeEffect from '../components/StrobeEffect';
+import PostList from '../components/PostList.astro';
+---
+
+<Layout title="Izvir">
+  <StrobeEffect client:load />
+  
+  <!-- <nav class="fixed top-0 left-0 right-0 py-4 px-5 z-10">
+    <div class="max-w-3xl mx-auto flex justify-end">
+      <a href="/posts" class="text-gray-400 hover:text-white transition-colors">Posts</a>
+    </div>
+  </nav> -->
+
+  <!-- Section 1 -->
+  <section class="pt-40 md:pt-60 pb-30 pr-5 pl-5">
+    <div class="flex justify-center mb-5">
+      <a href="/">
+        <div class="w-20 h-20 rounded-full red-bg animate-pulse-animation"></div>
+      </a>
+    </div>
+
+    <div class="mt-10 flex justify-center">
+      <img src="/izvir-logo.svg" alt="Logo" class="w-full max-w-sm izvir" style="max-width: 150px">
+    </div>
+  </section>
+
+  <!-- Section 2 -->
+  <section class="py-10 pr-5 pl-5">
+    <p class="text-center">A new social media platform for meaningful connections.</p>
+  </section>
+
+  <section class="py-10 pr-5 pl-5">
+    <div class="text-center justify-center max-w-lg mx-auto">
+      <p class="mb-4 text-l text-gray-400">
+        An average individual devotes approximately 2 hours daily to aimlessly browsing social media, in search of entertainment, validation, and attention.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-10 pr-5 pl-5">
+    <div class="text-center justify-center max-w-lg mx-auto">
+      <p class="">
+        Join the mission
+      </p>
+
+      <form class="flex flex-col items-center mt-5" method="POST"
+      action="https://forms.reform.app/headless/R8Uujx/izvir/dc0f3v/submissions" target="_blank">
+        <input type="email" placeholder="jes@above.com" class="w-full max-w-md px-4 py-2 mb-5 bg-black border border-gray-600"
+          name="answers[0c5f2207-f72b-4b03-bd3a-75ca1006b152]" required>
+        <button type="submit" class="red-button w-full max-w-md px-4 py-2 text-white font-bold">
+          Enter the source
+        </button>
+      </form>
+
+      <div class="mt-20 max-w-md mx-auto">
+        <PostList />
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-10 pr-5 pl-5 mt-20">
+    <p class="text-center text-gray-400 mb-4">
+      Designed to encourage educational, life-enhancing content.
+    </p>
+    <p class="text-center text-gray-400 mt-10"> 2024 The Source.</p>
+  </footer>
+</Layout>
