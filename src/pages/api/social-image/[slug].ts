@@ -3,6 +3,13 @@ import { getCollection } from 'astro:content';
 import { generateSocialImage } from '../../../utils/socialImage';
 import { imageCache } from '../../../utils/imageCache';
 
+export async function getStaticPaths() {
+    const posts = await getCollection('posts');
+    return posts.map(post => ({
+        params: { slug: post.slug }
+    }));
+}
+
 export const GET: APIRoute = async ({ params }) => {
     const { slug } = params;
     

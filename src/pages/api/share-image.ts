@@ -2,7 +2,7 @@ import type { APIRoute } from 'astro';
 import { createCanvas } from 'canvas';
 import { getCollection } from 'astro:content';
 
-export const get: APIRoute = async ({ url }) => {
+export const GET: APIRoute = async ({ url }) => {
   try {
     // Get the post permalink from query params
     const permalink = url.searchParams.get('post');
