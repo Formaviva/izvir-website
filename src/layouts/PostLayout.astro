@@ -15,9 +15,21 @@ const profile = {
 const currentPath = Astro.url.pathname.replace(/\/$/, '');
 const canonicalURL = new URL(currentPath, Astro.site).toString();
 
+// Generate social image URL
+const slug = currentPath.split('/').pop();
+const socialImageUrl = new URL(`/api/social-image/${slug}`, Astro.site).toString();
 ---
 
 <Layout title={`${frontmatter.title} - Izvir`}>
+  <head>
+    <!-- Social Media Meta Tags -->
+    <meta property="og:title" content={frontmatter.title} />
+    <meta property="og:description" content={frontmatter.description || `A post on Izvir by ${frontmatter.profile}`} />
+    <meta property="og:image" content={socialImageUrl} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={socialImageUrl} />
+  </head>
   <article class="max-w-3xl mx-auto px-4 py-12">
     <h1 class="text-3xl font-bold mb-4">{frontmatter.title}</h1>
     

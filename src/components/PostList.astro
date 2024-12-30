@@ -1,6 +1,8 @@
 ---
-// Get all posts from the profile directory
-const posts = await Astro.glob('../pages/the-source-team/*.md');
+// Get all posts from both directories
+const sourceTeamPosts = await Astro.glob('../pages/the-source-team/*.md');
+const regularPosts = await Astro.glob('../pages/posts/*.md');
+const allPosts = [...sourceTeamPosts, ...regularPosts];
 
 const profile = {
   name: "The Source",
@@ -8,7 +10,7 @@ const profile = {
 };
 
 // Sort posts by date
-const sortedPosts = posts
+const sortedPosts = allPosts
   .filter(post => !post.url.endsWith('index.astro'))
   .sort((a, b) => 
     new Date(b.frontmatter.publishDate).getTime() - new Date(a.frontmatter.publishDate).getTime()
