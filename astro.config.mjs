@@ -3,6 +3,6 @@ import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
 
 export default defineConfig({
-  site: 'https://izvir.social',
+  site: 'https://izvir.org',
   integrations: [react(), tailwind()],
 });
