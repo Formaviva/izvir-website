@@ -1,7 +1,7 @@
 ---
-import JoinMission from './JoinMission.astro';
-import ContentPreview from './ContentPreview.astro';
-import SharePost from './SharePost.astro';
+import JoinMission from '../components/JoinMission.astro';
+import ContentPreview from '../components/ContentPreview.astro';
+import SharePost from '../components/SharePost.astro';
 
 const { post, preview = true } = Astro.props;
 const publishDate = post.data.publishDate;
