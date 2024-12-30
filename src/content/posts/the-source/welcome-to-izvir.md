@@ -1,7 +1,8 @@
 ---
-layout: ../../layouts/PostLayout.astro
+permalink: welcome-to-izvir
 title: Welcome to Izvir
-publishDate: 2024-01-01
+profile: the-source
+publishDate: 2024-01-01T00:00:00.000Z
 ---
 
 Welcome to Izvir, a new social media platform designed for meaningful connections. 

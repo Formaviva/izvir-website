@@ -1,0 +1,29 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ProfilePosts from '../components/ProfilePosts.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const profiles = await getCollection('profiles');
+  return profiles.map(profile => ({
+    params: { profile: profile.data.permalink },
+    props: { profile: profile.data }
+  }));
+}
+
+const { profile } = Astro.props;
+---
+
+<Layout title={`${profile.name} - Izvir`}>
+  <div class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-12 text-center">
+      <h1 class="text-4xl font-bold mb-4">{profile.name}</h1>
+      <p class="text-gray-400 max-w-2xl mx-auto">{profile.bio}</p>
+    </header>
+
+    <div class="mb-8">
+      <h2 class="text-2xl font-semibold mb-6">All Posts</h2>
+      <ProfilePosts profile={profile.permalink} />
+    </div>
+  </div>
+</Layout>

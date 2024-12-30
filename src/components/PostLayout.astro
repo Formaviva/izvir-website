@@ -1,0 +1,49 @@
+---
+import JoinMission from './JoinMission.astro';
+import ContentPreview from './ContentPreview.astro';
+import SharePost from './SharePost.astro';
+
+const { post, preview = true } = Astro.props;
+const publishDate = post.data.publishDate;
+const currentPath = Astro.url.pathname.replace(/\/$/, '');
+const canonicalURL = new URL(currentPath, Astro.site).toString();
+
+// Generate social image URL
+const slug = currentPath.split('/').pop();
+const socialImageUrl = new URL(`/api/social-image/${slug}`, Astro.site).toString();
+---
+
+<article class="max-w-3xl mx-auto px-4 py-12">
+  <h1 class="text-3xl font-bold mb-4">{post.data.title}</h1>
+  <div class="flex items-center gap-2 text-gray-400 mb-8">
+    <span>by</span>
+    <a href={`/${post.data.profile}`} class="text-red-500 hover:text-red-400">
+      {post.data.profile === 'the-source' ? 'The Source' : post.data.profile}
+    </a>
+    <span>•</span>
+    <time datetime={publishDate.toISOString()}>
+      {publishDate.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      })}
+    </time>
+  </div>
+  <div class="prose prose-invert max-w-none">
+    <ContentPreview maxHeight="300px" preview=true>
+      <slot />
+      {preview && (
+        <div class="text-center mt-8">
+          <a href={`/${post.data.profile}/${post.data.permalink}`} class="text-red-500 hover:text-red-400">
+            Read More →
+          </a>
+        </div>
+      )}
+    </ContentPreview>
+  </div>
+  
+  <div class="mt-12 space-y-8">
+    <SharePost url={canonicalURL} title={post.data.title} />
+    <JoinMission />
+  </div>
+</article>

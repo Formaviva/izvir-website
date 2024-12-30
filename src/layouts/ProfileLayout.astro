@@ -2,9 +2,16 @@
 import Layout from './Layout.astro';
 
 const { frontmatter } = Astro.props;
-const allPosts = await Astro.glob('../pages/profiles/*/posts/*.md');
-const authorPosts = allPosts
-  .filter(post => post.url.includes(`/profiles/${frontmatter.permalink}/`))
+// Get posts from both locations
+const profilePosts = await Astro.glob('../pages/profiles/*/posts/*.md');
+const regularPosts = await Astro.glob('../pages/posts/*.md');
+
+// Combine and filter posts
+const authorPosts = [...profilePosts, ...regularPosts]
+  .filter(post => 
+    post.url.includes(`/profiles/${frontmatter.permalink}/`) || 
+    post.frontmatter.profile === frontmatter.name
+  )
   .sort((a, b) => 
     new Date(b.frontmatter.publishDate).getTime() - new Date(a.frontmatter.publishDate).getTime()
   );

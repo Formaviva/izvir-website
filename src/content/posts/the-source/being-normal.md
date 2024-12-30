@@ -1,9 +1,8 @@
 ---
-layout: ../../layouts/PostLayout.astro
 permalink: being-normal
 title: Being Normal
-profile: The Source
-publishDate: 2024-12-30
+profile: the-source
+publishDate: 2024-12-30T00:00:00.000Z
 ---
 
 What does it mean to be normal? This seemingly simple question unveils complex layers of human experience and social dynamics.
