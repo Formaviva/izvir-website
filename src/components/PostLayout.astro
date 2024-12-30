@@ -9,8 +9,8 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '');
 const canonicalURL = new URL(currentPath, Astro.site).toString();
 
 // Generate social image URL
-const slug = currentPath.split('/').pop();
-const socialImageUrl = new URL(`/api/social-image/${slug}`, Astro.site).toString();
+const pathParts = currentPath.split('/').filter(Boolean);
+const socialImageUrl = new URL(`/api/social-image?permalink=${post.data.permalink}`, Astro.site).toString();
 ---
 
 <article class="max-w-3xl mx-auto px-4 py-12">

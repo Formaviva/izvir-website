@@ -5,14 +5,16 @@ import { getCollection } from 'astro:content';
 export const GET: APIRoute = async ({ url }) => {
   try {
     // Get the post permalink from query params
-    const permalink = url.searchParams.get('post');
+    const permalink = url.searchParams.get('permalink');
     if (!permalink) {
       return new Response('Post permalink is required', { status: 400 });
     }
 
     // Get all posts and find the matching one
     const posts = await getCollection('posts');
-    const post = posts.find(p => p.data.permalink === permalink);
+    // Extract profile and post slug from the permalink
+    const [profile, postSlug] = permalink.split('/');
+    const post = posts.find(p => p.data.profile === profile && p.slug === postSlug);
     
     if (!post) {
       return new Response('Post not found', { status: 404 });
