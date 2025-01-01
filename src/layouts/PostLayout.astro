@@ -20,10 +20,8 @@ const visibleHeight = "500px"; // (visiblePercent / 100) * 100;
 ---
 
 <Layout title={`${post.data.title}${config.titlePostfix}`}>
-  <Fragment slot="head">
-    <title>{post.data.title}{config.titlePostfix}</title>
-    <meta property="og:title" content={`${post.data.title}${config.titlePostfix}`} />
-  </Fragment>
+  <meta property="og:title" content={`${post.data.title}${config.titlePostfix}`} />
+  <meta property="twitter:title" content={`${post.data.title}${config.titlePostfix}`} />
 
   <article class="max-w-3xl mx-auto px-4 py-12">
     <h1 class="text-3xl font-bold mb-4">{post.data.title}</h1>
