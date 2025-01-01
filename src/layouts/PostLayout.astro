@@ -2,6 +2,7 @@
 import JoinMission from '../components/JoinMission.astro';
 import ContentPreview from '../components/ContentPreview.astro';
 import SharePost from '../components/SharePost.astro';
+import config from '../../astro.config.mjs';
 
 const { post, preview = true, visiblePercent = 60 } = Astro.props;
 const publishDate = post.data.publishDate;
@@ -15,6 +16,10 @@ const socialImageUrl = new URL(`/api/social-image?permalink=${post.data.permalin
 const visibleHeight = "350px"; // (visiblePercent / 100) * 100;
 
 ---
+
+<head>
+  <title>{post.data.title}{config.titlePostfix}</title>
+</head>
 
 <article class="max-w-3xl mx-auto px-4 py-12">
   <h1 class="text-3xl font-bold mb-4">{post.data.title}</h1>
@@ -33,7 +38,7 @@ const visibleHeight = "350px"; // (visiblePercent / 100) * 100;
     </time>
   </div>
   <div class="prose prose-invert max-w-none">
-    <ContentPreview maxHeight="500px" preview=true>
+    <ContentPreview maxHeight={`${visibleHeight}`} preview={preview}>
       <slot />
       {preview && (
         <div class="text-center mt-8">
@@ -50,4 +55,3 @@ const visibleHeight = "350px"; // (visiblePercent / 100) * 100;
     <JoinMission />
   </div>
 </article>
-
