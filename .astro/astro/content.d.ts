@@ -141,6 +141,13 @@ declare module 'astro:content' {
 
 	type ContentEntryMap = {
 		"posts": {
+"high-vibration/social-media.md": {
+	id: "high-vibration/social-media.md";
+  slug: "high-vibration/social-media";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".md"] };
 "the-source/being-normal.md": {
 	id: "the-source/being-normal.md";
   slug: "the-source/being-normal";
@@ -157,6 +164,13 @@ declare module 'astro:content' {
 } & { render(): Render[".md"] };
 };
 "profiles": {
+"high-vibration.md": {
+	id: "high-vibration.md";
+  slug: "high-vibration";
+  body: string;
+  collection: "profiles";
+  data: InferEntrySchema<"profiles">
+} & { render(): Render[".md"] };
 "the-source.md": {
 	id: "the-source.md";
   slug: "the-source";
