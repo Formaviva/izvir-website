@@ -1,4 +1,5 @@
 ---
+import Layout from './Layout.astro';
 import JoinMission from '../components/JoinMission.astro';
 import ContentPreview from '../components/ContentPreview.astro';
 import SharePost from '../components/SharePost.astro';
@@ -18,42 +19,44 @@ const visibleHeight = "500px"; // (visiblePercent / 100) * 100;
 
 ---
 
-<head>
-  <title>{post.data.title}{config.titlePostfix}</title>
-  <meta property="og:title" content="{post.data.title}{config.titlePostfix}" />
-</head>
+<Layout title={`${post.data.title}${config.titlePostfix}`}>
+  <Fragment slot="head">
+    <title>{post.data.title}{config.titlePostfix}</title>
+    <meta property="og:title" content={`${post.data.title}${config.titlePostfix}`} />
+  </Fragment>
 
-<article class="max-w-3xl mx-auto px-4 py-12">
-  <h1 class="text-3xl font-bold mb-4">{post.data.title}</h1>
-  <div class="flex items-center gap-2 text-gray-400 mb-8">
-    <span>by</span>
-    <a href={`/${post.data.profile}`} class="text-red-500 hover:text-red-400">
-      {post.data.profile === 'the-source' ? 'The Source' : post.data.profile}
-    </a>
-    <span>•</span>
-    <time datetime={publishDate.toISOString()}>
-      {publishDate.toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-      })}
-    </time>
-  </div>
-  <div class="prose prose-invert max-w-none">
-    <ContentPreview maxHeight={`${visibleHeight}`} preview={preview}>
-      <slot />
-      {preview && (
-        <div class="text-center mt-8">
-          <a href={`/${post.data.profile}/${post.data.permalink}`} class="text-red-500 hover:text-red-400">
-            Read More →
-          </a>
-        </div>
-      )}
-    </ContentPreview>
-  </div>
-  
-  <div class="mt-12 space-y-8">
-    <SharePost url={canonicalURL} title={post.data.title} />
-    <JoinMission />
-  </div>
-</article>
+  <article class="max-w-3xl mx-auto px-4 py-12">
+    <h1 class="text-3xl font-bold mb-4">{post.data.title}</h1>
+    <div class="flex items-center gap-2 text-gray-400 mb-8">
+      <span>by</span>
+      <a href={`/${post.data.profile}`} class="text-red-500 hover:text-red-400">
+        {post.data.profile === 'the-source' ? 'The Source' : post.data.profile}
+      </a>
+      <span>•</span>
+      <time datetime={publishDate.toISOString()}>
+        {publishDate.toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        })}
+      </time>
+    </div>
+    <div class="prose prose-invert max-w-none">
+      <ContentPreview maxHeight={`${visibleHeight}`} preview={preview}>
+        <slot />
+        {preview && (
+          <div class="text-center mt-8">
+            <a href={`/${post.data.profile}/${post.data.permalink}`} class="text-red-500 hover:text-red-400">
+              Read More →
+            </a>
+          </div>
+        )}
+      </ContentPreview>
+    </div>
+    
+    <div class="mt-12 space-y-8">
+      <SharePost url={canonicalURL} title={post.data.title} />
+      <JoinMission />
+    </div>
+  </article>
+</Layout>
