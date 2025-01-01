@@ -3,7 +3,7 @@ import JoinMission from '../components/JoinMission.astro';
 import ContentPreview from '../components/ContentPreview.astro';
 import SharePost from '../components/SharePost.astro';
 
-const { post, preview = true } = Astro.props;
+const { post, preview = true, visiblePercent = 60 } = Astro.props;
 const publishDate = post.data.publishDate;
 const currentPath = Astro.url.pathname.replace(/\/$/, '');
 const canonicalURL = new URL(currentPath, Astro.site).toString();
@@ -11,6 +11,9 @@ const canonicalURL = new URL(currentPath, Astro.site).toString();
 // Generate social image URL
 const pathParts = currentPath.split('/').filter(Boolean);
 const socialImageUrl = new URL(`/api/social-image?permalink=${post.data.permalink}`, Astro.site).toString();
+
+const visibleHeight = "350px"; // (visiblePercent / 100) * 100;
+
 ---
 
 <article class="max-w-3xl mx-auto px-4 py-12">
@@ -47,3 +50,4 @@ const socialImageUrl = new URL(`/api/social-image?permalink=${post.data.permalin
     <JoinMission />
   </div>
 </article>
+
