@@ -16,6 +16,7 @@ const posts = defineCollection({
     permalink: z.string(),
     profile: z.string(),
     publishDate: z.date(),
+    preview: z.boolean().default(true),
   }),
 });
 

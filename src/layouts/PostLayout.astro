@@ -4,7 +4,8 @@ import ContentPreview from '../components/ContentPreview.astro';
 import SharePost from '../components/SharePost.astro';
 import config from '../../astro.config.mjs';
 
-const { post, preview = true, visiblePercent = 60 } = Astro.props;
+const { post, visiblePercent = 60 } = Astro.props;
+const preview = post.data.preview !== undefined ? post.data.preview : true;
 const publishDate = post.data.publishDate;
 const currentPath = Astro.url.pathname.replace(/\/$/, '');
 const canonicalURL = new URL(currentPath, Astro.site).toString();
@@ -13,7 +14,7 @@ const canonicalURL = new URL(currentPath, Astro.site).toString();
 const pathParts = currentPath.split('/').filter(Boolean);
 const socialImageUrl = new URL(`/api/social-image?permalink=${post.data.permalink}`, Astro.site).toString();
 
-const visibleHeight = "350px"; // (visiblePercent / 100) * 100;
+const visibleHeight = "500px"; // (visiblePercent / 100) * 100;
 
 ---
 
