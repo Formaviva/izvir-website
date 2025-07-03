@@ -6,29 +6,29 @@ import SharePost from '../components/SharePost.astro';
 import config from '../../astro.config.mjs';
 
 const { post, visiblePercent = 60 } = Astro.props;
-const preview = post.data.preview !== undefined ? post.data.preview : true;
-const publishDate = post.data.publishDate;
+const preview = post.preview !== undefined ? post.preview : true;
+const publishDate = new Date(post.publish_date);
 const currentPath = Astro.url.pathname.replace(/\/$/, '');
 const canonicalURL = new URL(currentPath, Astro.site).toString();
 
 // Generate social image URL
 const pathParts = currentPath.split('/').filter(Boolean);
-const socialImageUrl = new URL(`/api/social-image?permalink=${post.data.permalink}`, Astro.site).toString();
+const socialImageUrl = new URL(`/api/social-image?permalink=${post.permalink}`, Astro.site).toString();
 
 const visibleHeight = "500px"; // (visiblePercent / 100) * 100;
 
 ---
 
-<Layout title={`${post.data.title}${config.titlePostfix}`}>
-  <meta property="og:title" content={`${post.data.title}${config.titlePostfix}`} />
-  <meta property="twitter:title" content={`${post.data.title}${config.titlePostfix}`} />
+<Layout title={`${post.title}${config.titlePostfix}`}>
+  <meta property="og:title" content={`${post.title}${config.titlePostfix}`} />
+  <meta property="twitter:title" content={`${post.title}${config.titlePostfix}`} />
 
   <article class="max-w-3xl mx-auto px-4 py-12">
-    <h1 class="text-3xl font-bold mb-4">{post.data.title}</h1>
+    <h1 class="text-3xl font-bold mb-4">{post.title}</h1>
     <div class="flex items-center gap-2 text-gray-400 mb-8">
       <span>by</span>
-      <a href={`/${post.data.profile}`} class="text-red-500 hover:text-red-400">
-        {post.data.profile === 'the-source' ? 'The Source' : post.data.profile}
+      <a href={`/${post.profilePermalink}`} class="text-red-500 hover:text-red-400">
+        {post.profilePermalink === 'the-source' ? 'The Source' : post.profilePermalink}
       </a>
       <span>•</span>
       <time datetime={publishDate.toISOString()}>
@@ -44,7 +44,7 @@ const visibleHeight = "500px"; // (visiblePercent / 100) * 100;
         <slot />
         {preview && (
           <div class="text-center mt-8">
-            <a href={`/${post.data.profile}/${post.data.permalink}`} class="text-red-500 hover:text-red-400">
+            <a href={`/${post.profilePermalink}/${post.permalink}`} class="text-red-500 hover:text-red-400">
               Read More →
             </a>
           </div>
@@ -53,7 +53,7 @@ const visibleHeight = "500px"; // (visiblePercent / 100) * 100;
     </div>
     
     <div class="mt-12 space-y-8">
-      <SharePost url={canonicalURL} title={post.data.title} />
+      <SharePost url={canonicalURL} title={post.title} />
       <JoinMission />
     </div>
   </article>
