@@ -1,40 +1,31 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import ProfilePosts from '../../components/ProfilePosts.astro';
-import { getCollection } from 'astro:content';
+import { getAllProfiles } from '../../db';
 
 export async function getStaticPaths() {
-  const profiles = await getCollection('profiles');
+  const profiles = getAllProfiles();
   return profiles.map(profile => ({
-    params: { profile: profile.data.permalink },
+    params: { profile: profile.permalink },
     props: { profile }
   }));
 }
 
 const { profile } = Astro.props;
-const { Content } = await profile.render();
-
-// Get all posts for this profile
-const posts = await getCollection('posts');
-const profilePosts = posts
-  .filter(post => post.data.profile === profile.data.permalink)
-  .sort((a, b) => 
-    new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime()
-  );
 ---
 
-<Layout title={`${profile.data.name} - Izvir`}>
+<Layout title={`${profile.name} - Izvir`}>
   <div class="max-w-4xl mx-auto px-4 py-12">
     <header class="mb-12 text-center">
-      <h1 class="text-4xl font-bold mb-4">{profile.data.name}</h1>
+      <h1 class="text-4xl font-bold mb-4">{profile.name}</h1>
       <div class="text-gray-400 max-w-2xl mx-auto prose prose-invert">
-        <Content />
+        {profile.bio}
       </div>
     </header>
 
     <div class="mb-8">
       <h2 class="text-2xl font-semibold mb-6">All Posts</h2>
-      <ProfilePosts profile={profile.data.permalink} />
+      <ProfilePosts profile={profile.permalink} />
     </div>
   </div>
 </Layout>

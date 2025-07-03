@@ -1,23 +1,23 @@
 import type { APIRoute } from 'astro';
-import { getCollection } from 'astro:content';
+import { getAllPosts, getAllProfiles, getPost, getProfile } from '../../db';
 import { generateSocialImage } from '../../utils/socialImage';
 import { imageCache } from '../../utils/imageCache';
 
 export async function getStaticPaths() {
-    const posts = await getCollection('posts');
-    const profiles = await getCollection('profiles');
+    const posts = getAllPosts();
+    const profiles = getAllProfiles();
     
     // For posts: /api/social-image/[profile]/[post]
     const postPaths = posts.map(post => ({
-        params: { 
-            permalink: `${post.data.profile}/${post.data.permalink}`
+        params: {
+            permalink: `${post.profilePermalink}/${post.permalink}`
         }
     }));
     
     // For profiles: /api/social-image/[profile]
     const profilePaths = profiles.map(profile => ({
-        params: { 
-            permalink: profile.data.permalink
+        params: {
+            permalink: profile.permalink
         }
     }));
 
@@ -52,15 +52,14 @@ export const GET: APIRoute = async ({ request }) => {
         // Check if this is a profile or a post
         if (!permalink.includes('/')) {
             // This is a profile
-            const profiles = await getCollection('profiles');
-            const profile = profiles.find(p => p.data.permalink === permalink);
+            const profile = getProfile(permalink);
             
             if (!profile) {
                 return new Response('Profile not found', { status: 404 });
             }
 
             const image = await generateSocialImage(
-                profile.data.name,
+                profile.name,
                 'Izvir Social Profile'
             );
 
@@ -75,17 +74,16 @@ export const GET: APIRoute = async ({ request }) => {
             });
         } else {
             // This is a post
-            const posts = await getCollection('posts');
             const [profile, postPermalink] = permalink.split('/');
-            const post = posts.find(p => p.data.profile === profile && p.data.permalink === postPermalink);
+            const post = getPost(profile, postPermalink);
             
             if (!post) {
                 return new Response('Post not found', { status: 404 });
             }
 
             const image = await generateSocialImage(
-                post.data.title,
-                post.data.profile || 'Izvir Social'
+                post.title,
+                post.profilePermalink || 'Izvir Social'
             );
 
             // Cache the image

@@ -1,6 +1,6 @@
 import type { APIRoute } from 'astro';
 import { createCanvas } from 'canvas';
-import { getCollection } from 'astro:content';
+import { getPost } from '../../db';
 
 export const GET: APIRoute = async ({ url }) => {
   try {
@@ -10,11 +10,9 @@ export const GET: APIRoute = async ({ url }) => {
       return new Response('Post permalink is required', { status: 400 });
     }
 
-    // Get all posts and find the matching one
-    const posts = await getCollection('posts');
     // Extract profile and post slug from the permalink
     const [profile, postSlug] = permalink.split('/');
-    const post = posts.find(p => p.data.profile === profile && p.slug === postSlug);
+    const post = getPost(profile, postSlug);
     
     if (!post) {
       return new Response('Post not found', { status: 404 });
@@ -44,7 +42,7 @@ export const GET: APIRoute = async ({ url }) => {
     // Add profile name
     ctx.fillStyle = '#888888';
     ctx.font = '32px Arial';
-    ctx.fillText(`@${post.data.profile}`, width / 2, 150);
+    ctx.fillText(`@${post.profilePermalink}`, width / 2, 150);
 
     // Add post title with gradient
     const titleGradient = ctx.createLinearGradient(0, height / 2 - 100, 0, height / 2 + 100);
@@ -54,7 +52,7 @@ export const GET: APIRoute = async ({ url }) => {
     ctx.font = 'bold 64px Arial';
 
     // Word wrap title
-    const words = post.data.title.split(' ');
+    const words = post.title.split(' ');
     let line = '';
     let lines = [];
     const maxWidth = width - 200;
@@ -79,7 +77,7 @@ export const GET: APIRoute = async ({ url }) => {
     });
 
     // Add publish date at the bottom
-    const publishDate = new Date(post.data.publishDate).toLocaleDateString('en-US', {
+    const publishDate = new Date(post.publish_date).toLocaleDateString('en-US', {
       year: 'numeric',
       month: 'long',
       day: 'numeric'

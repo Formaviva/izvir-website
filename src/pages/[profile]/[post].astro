@@ -1,33 +1,37 @@
 ---
-import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import PostLayout from '../../layouts/PostLayout.astro';
+import { marked } from 'marked';
+import { getAllPosts, getPost } from '../../db';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('posts');
+  const posts = getAllPosts();
   return posts.map(post => ({
-    params: { 
-      profile: post.data.profile,
-      post: post.data.permalink
+    params: {
+      profile: post.profilePermalink,
+      post: post.permalink
     },
-    props: { post }
+    props: {
+      profile: post.profilePermalink,
+      postPermalink: post.permalink
+    }
   }));
 }
 
-const { post } = Astro.props;
-const { Content } = await post.render();
+const { profile, postPermalink } = Astro.props;
+const post = getPost(profile, postPermalink);
 ---
 
-<Layout title={`${post.data.title} - Izvir`}>
+<Layout title={`${post.title} - Izvir`}>
   <head>
     <!-- Social Media Meta Tags -->
-    <meta property="og:title" content={post.data.title} />
-    <meta property="og:description" content={post.data.description || `A post on Izvir by ${post.data.profile}`} />
+    <meta property="og:title" content={post.title} />
+    <meta property="og:description" content={`A post on Izvir by ${post.profilePermalink}`} />
     <meta property="og:url" content={Astro.url} />
     <meta name="twitter:card" content="summary_large_image" />
   </head>
-  
+
   <PostLayout post={post} preview={false}>
-    <Content />
+    <div set:html={marked.parse(post.content)} />
   </PostLayout>
 </Layout>
